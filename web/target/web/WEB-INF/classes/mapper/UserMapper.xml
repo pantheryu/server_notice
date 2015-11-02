@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+         
+<mapper namespace="com.kevin.web.dao.UserDAO">                       
+    <insert id="insertUser" parameterType="User" keyProperty="id">      
+        insert into days_user(
+        	id,
+            state,          
+            nickname)           
+            values
+            (
+            #{id},                  
+            #{state},          
+            #{nickname})          
+        </insert>            
+
+
+
+         <!--
+         <sql id="allmenbers">
+         id,
+         device_type,
+         device_num,
+         create_time,
+         last_time,
+         state,
+         nickname
+         </sql>
+         
+         <sql id="menberEcpId">
+         device_type,
+         device_num,
+         create_time,
+         last_time,
+         state,
+         nickname
+         </sql>
+         
+         <insert id="insertUser" parameterType="User" keyProperty="id">
+             insert into days_user(  
+             device_type,
+         device_num,
+         create_time,
+         last_time,
+         state,
+         nickname) 
+         values 
+         (        
+         #{device_type},
+         #{device_num},
+         #{create_time},
+         #{last_time},
+         #{state},
+         #{nickname})
+         </insert>
+         -->
+</mapper>
