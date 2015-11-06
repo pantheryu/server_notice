@@ -20,6 +20,22 @@
         <property name="suffix">
             <value>.jsp</value>
         </property>
-    </bean>  
-    
+    </bean>
+
+    <!--<bean    class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >-->
+        <!--<property name="messageConverters">-->
+            <!--<array>-->
+                <!--<bean class = "org.springframework.http.converter.StringHttpMessageConverter">-->
+                    <!--<property name = "supportedMediaTypes">-->
+                        <!--<list>-->
+                            <!--<value>text/html;charset=UTF-8</value>-->
+                            <!--<value>text/json;charset=UTF-8</value>-->
+                            <!--<value>text/plain;charset=UTF-8</value>-->
+                        <!--</list>-->
+                    <!--</property>-->
+                <!--</bean>-->
+            <!--</array>-->
+        <!--</property>-->
+    <!--</bean>-->
+
 </beans>

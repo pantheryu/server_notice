@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,13 +30,23 @@ public class TestController {
         model.addAttribute("date", dateFormat.format(new java.util.Date()));
         return "success";
     }
-    @RequestMapping(value = "/get",method = RequestMethod.GET)
-    public @ResponseBody resultCode returnValue(){
+    @RequestMapping(value = "/get.json",method = RequestMethod.GET)
+    public @ResponseBody resultCode returnValue(HttpServletResponse response){
         resultCode<List<CallboradMessage>> result = new resultCode();
 //        User user = new User();
 //        user.setId(1);
 //        user.setNickname("spring");
 //        user.setState(5);
+
+//        response.setContentType("text/json;charset=UTF-8");
+//        response.setCharacterEncoding("UTF-8");
+//        PrintWriter out = null;
+//        try {
+//            out = response.getWriter();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        out.write(result);
         List<CallboradMessage> list = new ArrayList<CallboradMessage>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -51,7 +64,7 @@ public class TestController {
         list.add(callboardMessage1);
 
         CallboradMessage callboardMessage2 = new CallboradMessage();
-        callboardMessage2.setCategoryId("study");
+        callboardMessage2.setCategoryId("学习");
         callboardMessage2.setDate("2015/10/23");
         callboardMessage2.setDetail("content1");
         callboardMessage2.setTitle("title1");
