@@ -1,6 +1,0 @@
-com\kevin\web\controller\NewApiController.class
-com\kevin\web\dao\UserDAO.class
-com\kevin\web\service\UserService.class
-com\kevin\web\controller\ApiController.class
-com\kevin\web\service\impl\UserServiceImpl.class
-com\kevin\web\controller\TestController.class
