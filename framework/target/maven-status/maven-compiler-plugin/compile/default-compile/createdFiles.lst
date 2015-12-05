@@ -6,11 +6,11 @@ com\kevin\framework\generate\packet\ApiRequestSignData.class
 com\kevin\framework\Handler\engine\ServiceEngine$ServiceEngineSingletonHolder.class
 com\kevin\framework\serializer\Serializer.class
 com\kevin\framework\client\SimpleApiClient.class
-com\kevin\framework\common\resultCode.class
 com\kevin\framework\generate\packet\HandShakePacket.class
 com\kevin\framework\client\NewApiClient.class
 com\kevin\framework\Handler\engine\ServiceEngine$1.class
 com\kevin\framework\builder\ApiRequestBuilder.class
+com\kevin\framework\common\ResultCode.class
 com\kevin\framework\generate\packet\ApiCallPacket.class
 com\kevin\framework\generate\test\ApiTest.class
 com\kevin\framework\packet\CommHttpPacket.class

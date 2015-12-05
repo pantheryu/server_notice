@@ -1,2 +1,4 @@
+com\kevin\model\utils\PathUtils.class
+com\kevin\model\LivePicInfo.class
 com\kevin\model\User.class
 com\kevin\model\CallboradMessage.class

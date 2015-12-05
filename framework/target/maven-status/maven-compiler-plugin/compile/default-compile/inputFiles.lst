@@ -3,7 +3,7 @@ D:\workspace\Snotice-server\Snotice-server\framework\src\main\java\com\kevin\fra
 D:\workspace\Snotice-server\Snotice-server\framework\src\main\java\com\kevin\framework\Handler\ApiRequestHandler.java
 D:\workspace\Snotice-server\Snotice-server\framework\src\main\java\com\kevin\framework\generate\packet\ApiResultPacket.java
 D:\workspace\Snotice-server\Snotice-server\framework\src\main\java\com\kevin\framework\serializer\protobuf\ProtobufSerializer.java
-D:\workspace\Snotice-server\Snotice-server\framework\src\main\java\com\kevin\framework\common\resultCode.java
+D:\workspace\Snotice-server\Snotice-server\framework\src\main\java\com\kevin\framework\common\ResultCode.java
 D:\workspace\Snotice-server\Snotice-server\framework\src\main\java\com\kevin\framework\sign\SignManager.java
 D:\workspace\Snotice-server\Snotice-server\framework\src\main\java\com\kevin\framework\builder\ApiResponseBuilder.java
 D:\workspace\Snotice-server\Snotice-server\framework\src\main\java\com\kevin\framework\generate\test\ApiTest.java

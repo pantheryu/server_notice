@@ -7,12 +7,12 @@ import java.io.Serializable;
 /**
  * Created by spirit on 2015/10/2.
  */
-public class resultCode<T> implements Serializable {
+public class ResultCode<T> implements Serializable {
     private String errMsg;
     private int errCode;
     private T data;
 
-    public resultCode() {
+    public ResultCode() {
         this.errMsg = "success";
         this.errCode = 0;
         this.data = null;
