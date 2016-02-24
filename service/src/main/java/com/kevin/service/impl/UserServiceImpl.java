@@ -11,11 +11,20 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService{
+
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private User user;
 
     public int insertUser(User user) {
         // TODO Auto-generated method stub
         return userDAO.insertUser(user);
+    }
+
+    public User findUser(int id) {
+        user.setId(1);
+        return userDAO.finduserById(id);
     }
 }

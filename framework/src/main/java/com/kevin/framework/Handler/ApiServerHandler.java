@@ -5,9 +5,6 @@ import com.kevin.framework.error.ApiException;
 import com.kevin.framework.generate.packet.ApiRequestPacket;
 import com.kevin.framework.generate.packet.ApiResponsePacket;
 import com.kevin.framework.serializer.Serializer;
-import com.kevin.framework.serializer.protobuf.ProtobufSerializer;
-import com.kevin.service.ApiService;
-import com.kevin.service.impl.ApiServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +26,6 @@ public class ApiServerHandler {
     private static final Logger log = LoggerFactory
             .getLogger(ApiServerHandler.class);
     private ApiRequestHandler handler = new ApiRequestHandler();
-
 
     public ApiRequestHandler getApiRequestHandler() {
         return apiRequestHandler;

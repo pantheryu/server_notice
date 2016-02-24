@@ -1,8 +1,11 @@
 package com.kevin.model;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by spirit on 2015/11/13.
  */
+@Component
 public class LivePicInfo {
     private String picStoreUrl;
     private String picInfoUrl;

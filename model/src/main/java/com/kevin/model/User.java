@@ -1,8 +1,11 @@
 package com.kevin.model;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by spirit on 2015/10/2.
  */
+@Component
 public class User {
     private int id;
     private int state;

@@ -1,14 +1,11 @@
 package com.kevin.web.controller;
 
 import com.dyuproject.protostuff.ByteString;
-import com.kevin.framework.generate.test.ApiReqPacket;
 import com.kevin.framework.generate.test.ApiRestPacket;
 import com.kevin.framework.generate.test.ApiTest;
-import com.kevin.framework.packet.CommHttpPacket;
 import com.kevin.framework.serializer.Serializer;
 import com.kevin.framework.serializer.protobuf.ProtobufSerializer;
-import com.kevin.service.ApiService;
-import com.kevin.service.impl.ApiServiceImpl;
+import com.kevin.framework.ApiServiceImpl;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;

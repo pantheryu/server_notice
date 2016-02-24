@@ -4,15 +4,15 @@ package com.kevin.framework.generate.packet;
 //option java_outer_classname = "CommPackageProtos";
 
 /**
- * Àà Ãû: CommPackageProtos<br/>
- * Ãè Êö: ¿Í»§¶Ëµ½·þÎñ¶ËµÄÍ¨ÐÅÐ­ÒéProtos<br/>
- * ×÷ Õß: ÐÜÎ°Â×<br/>
- * ´´ ½¨: 2015Äê8ÔÂ18ÈÕ<br/>
+ * ï¿½ï¿½ ï¿½ï¿½: CommPackageProtos<br/>
+ * ï¿½ï¿½ ï¿½ï¿½: ï¿½Í»ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Í¨ï¿½ï¿½Ð­ï¿½ï¿½Protos<br/>
+ * ï¿½ï¿½ ï¿½ï¿½: ï¿½ï¿½Î°ï¿½ï¿½<br/>
+ * ï¿½ï¿½ ï¿½ï¿½: 2015ï¿½ï¿½8ï¿½ï¿½18ï¿½ï¿½<br/>
  *
- * Àú Ê·: (°æ±¾) ×÷Õß Ê±¼ä ×¢ÊÍ
+ * ï¿½ï¿½ Ê·: (ï¿½æ±¾) ï¿½ï¿½ï¿½ï¿½ Ê±ï¿½ï¿½ ×¢ï¿½ï¿½
  */
 
-//Apiµ÷ÓÃÈë²ÎÊý¾Ý¶ÔÏó
+//Apiï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½
 message ApiCallPacket {
     required int32 requestNumber = 1;
     required string apiName = 2;
@@ -20,26 +20,26 @@ message ApiCallPacket {
     repeated bytes parameter = 4;
 }
 
-//Apiµ÷ÓÃ·µ»ØÊý¾Ý¶ÔÏó
+//Apiï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½
 message ApiResultPacket {
-    required int32 requestNumber = 1; // ÓëApiCallPacket.request_no¶ÔÓ¦
+    required int32 requestNumber = 1; // ï¿½ï¿½ApiCallPacket.request_noï¿½ï¿½Ó¦
     required int32 errorCode = 2;
     optional string errorMessage = 3;
     optional bytes returnValue = 4;
 }
 
-//Ò»´ÎApiÇëÇóÊý¾Ý°ü
+//Ò»ï¿½ï¿½Apiï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½
 message ApiRequestPacket {
-    repeated ApiCallPacket api_calls = 1; // ´ýµ÷ÓÃµÄ
-    optional string longTermSessionID = 2; // ³¤Ð§SessionID
-    optional HandShakePacket handShake = 3; // ÎÕÊÖÐÅÏ¢¡£Èç¹û»¹Ã»ÓÐltsid£¬¿ÉÒÔÌí¼Ó´ËÐÅÏ¢£¬½øÐÐÎÕÊÖ£¬»ñÈ¡ltsid£»Èç¹ûÓÐltsid£¬Ôò´ËÐÅÏ¢ºöÂÔ.
-    optional RequestHeaderPacket packetHeader = 4; // Ã¿´Îapiµ÷ÓÃ£¬¿ÉÑ¡Ìí¼Ó
+    repeated ApiCallPacket api_calls = 1; // ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½
+    optional string longTermSessionID = 2; // ï¿½ï¿½Ð§SessionID
+    optional HandShakePacket handShake = 3; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ltsidï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½È¡ltsidï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ltsidï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½.
+    optional RequestHeaderPacket packetHeader = 4; // Ã¿ï¿½ï¿½apiï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½
 
-    optional int32 api_ver = 5 default 1; // ±íÊ¾Ð­Òé°æ±¾ºÅ£¬ °æ±¾2Æð£¬ÇëÇó±ØÐë¼ÓÇ©
-    optional int64 timeStamp = 6; // µ±Ç°Ê±¼ä´Á, UTC 1970-1-1 0Ê±Æðµ½ÏÖÔÚÊ±¿ÌµÄºÁÃëÊý
+    optional int32 api_ver = 5 default 1; // ï¿½ï¿½Ê¾Ð­ï¿½ï¿½æ±¾ï¿½Å£ï¿½ ï¿½æ±¾2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç©
+    optional int64 timeStamp = 6; // ï¿½ï¿½Ç°Ê±ï¿½ï¿½ï¿½, UTC 1970-1-1 0Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ÌµÄºï¿½ï¿½ï¿½ï¿½ï¿½
 
-    optional string app_key = 101; // ÐÂapiµÄappKey
-    optional string signInfo = 102; // Ç©Ãû´®, StringUtils.upperCase(DigestUtils.md5Hex(appSecret + new String(serializer.serialize(apiRequestSignData), "ISO-8859-1") + appSecret))
+    optional string app_key = 101; // ï¿½ï¿½apiï¿½ï¿½appKey
+    optional string signInfo = 102; // Ç©ï¿½ï¿½ï¿½ï¿½, StringUtils.upperCase(DigestUtils.md5Hex(appSecret + new String(serializer.serialize(apiRequestSignData), "ISO-8859-1") + appSecret))
 }
 
 message ApiRequestSignData {
@@ -53,13 +53,13 @@ message ApiRequestSignData {
 
 message ApiResponsePacket {
     repeated ApiResultPacket api_results = 1;
-    optional string longTermSessionID = 2; // Èç¹ûÇëÇóÖÐÃ»ÓÐltsid£¬ÇÒÓÐÎÕÊÖ£¬Ôò´´½¨ÐÂltsid£»·ñÔò£¬·µ»ØÇëÇóÖÐµÄltsid
+    optional string longTermSessionID = 2; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ltsidï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ò´´½ï¿½ï¿½ï¿½ltsidï¿½ï¿½ï¿½ï¿½ï¿½ò£¬·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ltsid
     optional int32 error_code = 3;
     optional string error_message = 4;
 }
 
 /*
- * ÎÕÊÖÐÅÏ¢£¬´´½¨³¤Ð§SessionÊ¹ÓÃ.
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§SessionÊ¹ï¿½ï¿½.
  */
 message HandShakePacket {
     optional string serial_no = 1;
@@ -79,13 +79,22 @@ message RequestHeaderPacket {
     optional string firmware = 4;
     optional string os_type = 5;
     optional string os_ver = 6;
-    optional string udid = 7; // ¶ÔÓÚiOS£¬´«UDID£»¶ÔÓÚAndroid£¬´«AndroidId
-    optional int32 client_ver = 8; // ¿Í»§¶Ë°æ±¾ºÅ
-    optional string ttid = 9; // ÇþµÀºÅ
-    optional int64 first_installed_at = 10; // ³õ´Î°²×°Ê±¼ä
-    optional int64 last_installed_at = 11; // ÉÏ´Î°²×°Ê±¼ä
-    optional int64 first_activated_at = 12; // µÚÒ»´ÎÆô¶¯Ê±¼ä
-    optional string network = 13; // ÍøÂç½ÓÈëÐÎÊ½
-    optional string location = 14; // Î»ÖÃÐÅÏ¢, JSON¸ñÊ½
-    optional string app_key = 15; // Ó¦ÓÃµÄappKey
+    optional string udid = 7; // ï¿½ï¿½ï¿½ï¿½iOSï¿½ï¿½ï¿½ï¿½UDIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Androidï¿½ï¿½ï¿½ï¿½AndroidId
+    optional int32 client_ver = 8; // ï¿½Í»ï¿½ï¿½Ë°æ±¾ï¿½ï¿½
+    optional string ttid = 9; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    optional int64 first_installed_at = 10; // ï¿½ï¿½ï¿½Î°ï¿½×°Ê±ï¿½ï¿½
+    optional int64 last_installed_at = 11; // ï¿½Ï´Î°ï¿½×°Ê±ï¿½ï¿½
+    optional int64 first_activated_at = 12; // ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+    optional string network = 13; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
+    optional string location = 14; // Î»ï¿½ï¿½ï¿½ï¿½Ï¢, JSONï¿½ï¿½Ê½
+    optional string app_key = 15; // Ó¦ï¿½Ãµï¿½appKey
+}
+
+message LivePicMessage{
+    required string picStoreUrl = 1;
+    required string picInfoUrl = 2;
+}
+
+message LivePicMessageList{
+    repeated LivePicMessage picList = 1;
 }

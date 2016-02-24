@@ -2,10 +2,9 @@ package com.kevin.framework;
 
 import com.kevin.framework.client.NewApiClient;
 import com.kevin.framework.client.SimpleApiClient;
+import com.kevin.framework.generate.test.testPara;
 import com.kevin.framework.serializer.Serializer;
 import com.kevin.framework.serializer.protobuf.ProtobufSerializer;
-import com.kevin.service.ApiService;
-import com.kevin.service.impl.ApiServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +23,7 @@ public class SimpleClientTest {
     private ApiService apiServie = null;
     private ApiService newApiService = null;
     private NewApiClient newClient = null;
+
 
     @Before
     public void setUp(){
@@ -61,16 +61,22 @@ public class SimpleClientTest {
 
     @Test
     public void testPb(){
-        String str = apiServie.sayHello("a","h");
-        System.out.println(str);
+        testPara para = new testPara();
+        para.setA("a");
+        para.setB("b");
+        testPara res = apiServie.sayHello(para);
+        System.out.println(res.getA());
     }
 
 
     @Test
-    //ÐÂµÄ¹¹¼Ü²âÊÔ
+    //ï¿½ÂµÄ¹ï¿½ï¿½Ü²ï¿½ï¿½ï¿½
     public void testNewApiPb(){
-        String str = newApiService.sayHello("a","a");
-        System.out.println(str);
+        testPara para = new testPara();
+        para.setA("a");
+        para.setB("b");
+        testPara res = newApiService.sayHello(para);
+        System.out.println(res.getA());
     }
 
     @Test

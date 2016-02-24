@@ -7,6 +7,6 @@
       http://www.springframework.org/schema/context
       http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!-- 扫描文件（自动将servicec层注入） -->
-<context:component-scan base-package="com.kevin.service"/>
+    <!-- 扫描文件（自动将servicec层注入） -->
+    <!--<context:component-scan base-package="com.kevin.dao"/>-->
 </beans>

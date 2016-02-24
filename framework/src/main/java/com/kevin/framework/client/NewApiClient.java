@@ -4,10 +4,8 @@ import com.dyuproject.protostuff.ByteString;
 import com.kevin.framework.generate.packet.ApiCallPacket;
 import com.kevin.framework.generate.packet.ApiRequestPacket;
 import com.kevin.framework.generate.test.ApiRestPacket;
-import com.kevin.framework.generate.test.ApiTest;
 import com.kevin.framework.serializer.Serializer;
-import com.kevin.service.ApiService;
-import com.kevin.service.impl.ApiServiceImpl;
+import com.kevin.framework.ApiService;
 import org.apache.commons.io.IOUtils;
 
 import java.io.Closeable;

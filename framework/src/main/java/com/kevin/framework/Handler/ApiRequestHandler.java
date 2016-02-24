@@ -45,7 +45,7 @@ public class ApiRequestHandler {
     }
 
     /*
-     *²ð°üÔËËã£¬ÎªÃ¿Ò»¸öµ÷ÓÃ°üÉèÖÃ·µ»ØÐÅÏ¢
+     *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ÎªÃ¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
      * */
     public ApiResponsePacket execute(ApiRequestPacket request) {
         ApiResultPacket apiResultPacket = new ApiResultPacket();
@@ -65,14 +65,14 @@ public class ApiRequestHandler {
                 builder.addFailureResult(apiCallPacket.getRequestNumber(), e);
             }
         }
-        //ÅÐ¶ÏÍ·²¿¸ø³ö·µ»Ø°üµÄ´íÎóÐÅÏ¢,ÔÝÊ±·µ»ØÕýÈ·
+        //ï¿½Ð¶ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢,ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·
         builder.setErrCode(0);
         builder.setErrMsg("success");
         return builder.toPacket(serializer);
     }
 
     /**
-     * Ö´ÐÐ¾ßÌåµÄapiµ÷ÓÃ£¬·µ»Ø½á¹û¡£Ö÷ÒªÊÇ·´ÐòÁÐ»¯ºÍ½«½á¹ûÐòÁÐ»¯
+     * Ö´ï¿½Ð¾ï¿½ï¿½ï¿½ï¿½apiï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½
      * */
     public Object callApi(ApiCallPacket apiCallPacket) {
 
@@ -96,10 +96,13 @@ public class ApiRequestHandler {
         List<Object> objList = new ArrayList<Object>();
         Class[] parameterTypes = method.getParameterTypes();
         byte[] bytes = null;
-        for (int i =0;i<list.size();i++){
-            bytes = list.get(i).toByteArray();
-            object = serializer.deserialize(parameterTypes[i],bytes);
-            objList.add(object);
+        if (list != null && list.size() > 0){
+            for (int i =0;i<list.size();i++){
+                bytes = list.get(i).toByteArray();
+                object = serializer.deserialize(parameterTypes[i],bytes);
+                objList.add(object);
+            }
+
         }
         Object[] objects = objList.toArray();
         try {

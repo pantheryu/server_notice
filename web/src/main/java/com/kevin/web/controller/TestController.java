@@ -3,7 +3,7 @@ package com.kevin.web.controller;
 import com.kevin.framework.common.ResultCode;
 import com.kevin.model.CallboradMessage;
 import com.kevin.model.LivePicInfo;
-import com.kevin.model.utils.PathUtils;
+import com.kevin.framework.utils.PathUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
