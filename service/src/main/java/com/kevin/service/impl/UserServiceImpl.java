@@ -6,6 +6,8 @@ import com.kevin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by spirit on 2015/10/2.
  */
@@ -23,8 +25,7 @@ public class UserServiceImpl implements UserService{
         return userDAO.insertUser(user);
     }
 
-    public User findUser(int id) {
-        user.setId(1);
-        return userDAO.finduserById(id);
+    public List<User> findUser() {
+        return userDAO.finduserById();
     }
 }

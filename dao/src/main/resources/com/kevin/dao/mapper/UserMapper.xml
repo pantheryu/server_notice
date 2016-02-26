@@ -14,8 +14,15 @@
             #{id},                  
             #{state},          
             #{nickname})          
-        </insert>            
-    <select id="finduserById" resultType="User">
-        SELECT * FROM days_user WHERE id = #{id}
+        </insert>
+
+    <resultMap id="userMap" type="User">
+        <id property="id" column="id"/>
+        <result property="state" column="state"/>
+        <result property="nickname" column="nickname"/>
+    </resultMap>
+
+    <select id="finduserById" resultType="User" resultMap="userMap">
+        SELECT * FROM days_user
     </select>
 </mapper>

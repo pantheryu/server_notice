@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kevin.dao.NoticeMessageDAO">
+    <resultMap id="noticeMsgMap" type="BaseNoticeMessage">
+        <id property="msgId" column="msgid"/>
+        <result property="userId" column="userid"/>
+        <result property="desId" column="desid"/>
+        <result property="sendDate" javaType="java.util.Date" column="send_date" jdbcType="TIMESTAMP"/>
+        <result property="title" column="title"/>
+        <result property="detail" column="detail"/>
+        <result property="date" javaType="java.util.Date" column="date" jdbcType="TIMESTAMP"/>
+        <result property="place" column="place"/>
+        <result property="categoryId" column="categoryid"/>
+        <result property="up" column="up"/>
+        <result property="down" column="down"/>
+
+    </resultMap>
+
+    <select id="getNoticeMessage" resultType="BaseNoticeMessage" resultMap="noticeMsgMap">
+        SELECT * FROM noticemessage WHERE userid=#{userId} and categoryid=#{categoryId} limit 16 offset #{pageNum,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insertNoticeMessage" parameterType="BaseNoticeMessage" >
+        INSERT INTO noticemessage(msgid,userid,title,detail,date,place,categoryid,up,down,desid,send_date)
+        VALUES (#{msgId},#{userId},#{title},#{detail},#{date},#{place},#{categoryId},#{up},#{down},#{desId},#{sendDate})
+    </insert>
+
+    <update id="updateNoticeMessage">
+        UPDATE noticemessage
+        <choose>
+            <when test="praise > 0">
+                SET up = up+1
+            </when>
+            <otherwise>
+                SET down = down-1
+            </otherwise>
+        </choose>
+        WHERE msgid=#{msgId}
+    </update>
+</mapper>
