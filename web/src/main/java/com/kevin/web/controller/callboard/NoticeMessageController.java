@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.awt.image.RescaleOp;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class NoticeMessageController {
     * */
     @RequestMapping(value = "/notice_message.json",method = RequestMethod.GET)
     public @ResponseBody ResultCode getBaseNoticeMessage(
-            @RequestParam("userId") int userId,
+            @RequestParam("areaId") int userId,
             @RequestParam("pageNum") int pageNum,
             @RequestParam("categoryId") int categoryId
     ){
@@ -46,10 +45,9 @@ public class NoticeMessageController {
     * */
     @RequestMapping(value = "/post_notice_message",method = RequestMethod.POST)
     public @ResponseBody ResultCode pushBaseNoticeMessage(
-            @RequestParam("msgId") int msgId,
             @RequestParam("userId") int userId,
             @RequestParam("title") String title,
-            @RequestParam("dedail") String dedail,
+            @RequestParam("detail") String detail,
             @RequestParam("date") long date,
             @RequestParam("place") String place,
             @RequestParam("categoryId") int categoryId,
@@ -59,11 +57,10 @@ public class NoticeMessageController {
             @RequestParam("send_date") long sendDate
     ){
         ResultCode result = new ResultCode();
-        baseNoticeMessage.setMsgId(msgId);
         baseNoticeMessage.setUserId(userId);
         baseNoticeMessage.setTitle(title);
         baseNoticeMessage.setDate(new Date(date));
-        baseNoticeMessage.setDetail(dedail);
+        baseNoticeMessage.setDetail(detail);
         baseNoticeMessage.setPlace(place);
         baseNoticeMessage.setCategoryId(categoryId);
         baseNoticeMessage.setUp(up);
@@ -81,11 +78,14 @@ public class NoticeMessageController {
     @RequestMapping(value = "/update_notice_message",method = RequestMethod.GET)
     public @ResponseBody ResultCode updateBaseNoticeMessage(
             @RequestParam("msgId") int msgId,
-            @RequestParam("praise") int praise
+            @RequestParam("praise") int praise,
+            @RequestParam("userId") int userId
     ){
-        ResultCode result = new ResultCode();
+        ResultCode<Integer> result = new ResultCode();
         int ret = baseNoticeService.updateNoticeMessage(praise,msgId);
-        result.setErrCode(ret);
+        int ret1 = baseNoticeService.insertNoticePraise(userId,msgId);
+        result.setErrCode(ret1);
+        result.setData(ret);
         return result;
     }
 }

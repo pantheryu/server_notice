@@ -16,16 +16,28 @@
         <result property="categoryId" column="categoryid"/>
         <result property="up" column="up"/>
         <result property="down" column="down"/>
+        <!--<association property="isVoted" column="userid and msgid" javaType="boolean" select="selectVoted"/>-->
+        <association property="userName" column="userid" javaType="string" select="selectUserInfo"/>
+        <association property="categoryName" column="categoryid" javaType="string" select="selectCategoryName"/>
 
     </resultMap>
 
+
     <select id="getNoticeMessage" resultType="BaseNoticeMessage" resultMap="noticeMsgMap">
-        SELECT * FROM noticemessage WHERE userid=#{userId} and categoryid=#{categoryId} limit 16 offset #{pageNum,jdbcType=INTEGER}
+        SELECT * FROM noticemessage WHERE desid=#{areaId}
+        <if test="categoryId != 10">
+            and categoryid=#{categoryId}
+        </if>
+        limit 4 offset #{pageNum,jdbcType=INTEGER}
     </select>
 
-    <insert id="insertNoticeMessage" parameterType="BaseNoticeMessage" >
-        INSERT INTO noticemessage(msgid,userid,title,detail,date,place,categoryid,up,down,desid,send_date)
-        VALUES (#{msgId},#{userId},#{title},#{detail},#{date},#{place},#{categoryId},#{up},#{down},#{desId},#{sendDate})
+    <insert id="insertNoticeMessage" parameterType="BaseNoticeMessage" useGeneratedKeys="true" keyProperty="msgid">
+        INSERT INTO noticemessage(userid,title,detail,date,place,categoryid,up,down,desid,send_date)
+        VALUES (#{userId},#{title},#{detail},#{date},#{place},#{categoryId},#{up},#{down},#{desId},#{sendDate})
+    </insert>
+
+    <insert id="insertNoticePraise">
+        INSERT INTO user_vote_message (userid,msgid,voted) VALUES (#{userId},#{msgId},1)
     </insert>
 
     <update id="updateNoticeMessage">
@@ -35,9 +47,22 @@
                 SET up = up+1
             </when>
             <otherwise>
-                SET down = down-1
+                SET down = down+1
             </otherwise>
         </choose>
         WHERE msgid=#{msgId}
     </update>
+
+    <select id="selectUserInfo" resultType="string" parameterType="int">
+        SELECT nickname FROM user_info WHERE userid=#{userId}
+    </select>
+
+    <select id="selectCategoryName" resultType="string" parameterType="int">
+        SELECT name FROM category WHERE categoryid=#{categoryId}
+    </select>
+
+
+    <select id="selectVoted" resultType="boolean">
+        SELECT COUNT(1) voted FROM user_vote_message WHERE userid=#{userId} and msgid=#{msgId}
+    </select>
 </mapper>

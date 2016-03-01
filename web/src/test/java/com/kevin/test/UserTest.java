@@ -13,12 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -65,7 +62,6 @@ public class UserTest {
 	@Test
 	public void testInsertNoticeMsg(){
 		BaseNoticeMessage callboardMessage1 = new BaseNoticeMessage();
-		callboardMessage1.setMsgId(11);
 		callboardMessage1.setUserId(1);
 		callboardMessage1.setDesId(3);
 		callboardMessage1.setSendDate(new Date());
@@ -82,16 +78,19 @@ public class UserTest {
 	@Test
 	public void testGetNoticeMsg(){
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		List<BaseNoticeMessage> baseNoticeMessages = baseNoticeService.getNoticeMessage(1,0,1);
+		List<BaseNoticeMessage> baseNoticeMessages = baseNoticeService.getNoticeMessage(1,2,1);
 		for (BaseNoticeMessage b:baseNoticeMessages){
-			String reportDate = df.format(b.getDate());
-			System.out.println(reportDate);
+//			String reportDate = df.format(b.getDate());
+//			System.out.println(reportDate);
+			System.out.println(b.getUserName());
+			System.out.println(b.getCategoryId());
+			System.out.println(b.getUserId());
+			System.out.println(b.isVoted());
 		}
 	}
 
 	@Test
 	public void testDate(){
-		Date today = new Date();
-		System.out.print(today.getDay());
+		baseNoticeService.insertNoticePraise(1,5);
 	}
 }

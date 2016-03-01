@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service
 public class BaseNoticeServiceImpl implements BaseNoticeService {
-    private int pageSize = 16;
+    private int pageSize = 4;
     private DateFormat df;
 
     @Autowired
@@ -24,7 +24,7 @@ public class BaseNoticeServiceImpl implements BaseNoticeService {
         df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         List<BaseNoticeMessage> baseNoticeMessages = noticeMessageDAO.getNoticeMessage(userId,pageNum*pageSize,categoryId);
         for (BaseNoticeMessage b:baseNoticeMessages){
-
+            b.setIsVoted(noticeMessageDAO.selectVoted(b.getUserId(),b.getMsgId()));
         }
         return baseNoticeMessages;
     }
@@ -36,5 +36,7 @@ public class BaseNoticeServiceImpl implements BaseNoticeService {
     public int updateNoticeMessage(int praise,int msgId){
         return noticeMessageDAO.updateNoticeMessage(praise,msgId);
     }
-
+    public int insertNoticePraise(int userId,int msgId){
+        return noticeMessageDAO.insertNoticePraise(userId,msgId);
+    }
 }
