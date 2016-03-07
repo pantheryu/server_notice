@@ -5,10 +5,16 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
         <!-- 命名空间 -->
     <typeAliases>
-         <typeAlias alias="User" type="com.kevin.model.User"/>
+        <typeAlias alias="User" type="com.kevin.model.User"/>
         <typeAlias alias="BaseNoticeMessage" type="com.kevin.model.BaseNoticeMessage"/>
-    </typeAliases>
+        <typeAlias type="com.kevin.model.info.UniversityInfo" alias="UniversityInfo"/>
+        <typeAlias type="com.kevin.model.info.SchoolInfo" alias="SchoolInfo"/>
+        <typeAlias type="com.kevin.model.info.ClubInfo" alias="ClubInfo"/>
+        <typeAlias type="com.kevin.model.info.CommunityInfo" alias="CommunityInfo"/>
+        <typeAlias type="com.kevin.model.info.BaseGroupInfo" alias="BaseGroupInfo"/>
+        <typeAlias type="com.kevin.model.user.UserJoinedGroup" alias="UserJoinedGroup"/>
+
+     </typeAliases>
     <!-- 映射map -->
-    <mappers>
-    </mappers>
+
 </configuration>

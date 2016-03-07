@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kevin.dao.UserInfoDAO">
+
+<resultMap id="userJoinedGroupMap" type="UserJoinedGroup">
+    <collection property="clubInfoList" column="clubid"  javaType="ArrayList" ofType="ClubInfo" select="selectClub"/>
+</resultMap>
+
+<select id="getUserJoined"  parameterType="int" resultMap="userJoinedGroupMap">
+    SELECT clubid FROM clubjoined WHERE userid=#{userId}
+</select>
+
+<resultMap id="ClubListMap" type="ClubInfo">
+    <id property="id" column="club_id"/>
+    <result property="name" column="club_name"/>
+    <result property="description" column="description"/>
+    <result property="memberNums" column="members"/>
+    <result property="clubCategory" column="category_id"/>
+</resultMap>
+
+<select id="selectClub" parameterType="int" resultType="ClubInfo" resultMap="ClubListMap">
+    SELECT * FROM club_info WHERE club_id=#{clubid}
+</select>
+    
+    <resultMap id="clubMap" type="ClubInfo">
+        <association property="ClubInfo" column="clubid" javaType="ClubInfo" select="selectClub"/>
+    </resultMap>
+
+    <select id="selectClubs" parameterType="int" resultMap="clubMap">
+        SELECT * FROM clubjoined WHERE userid=#{userId}
+    </select>
+
+    <select id="getUserJoinedId" parameterType="int" resultType="int">
+        SELECT clubid FROM clubjoined WHERE userid=#{userId}
+    </select>
+    
+    
+</mapper>

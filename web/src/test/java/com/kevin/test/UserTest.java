@@ -5,13 +5,21 @@ import com.kevin.model.BaseNoticeMessage;
 import com.kevin.model.User;
 
 import com.kevin.model.UserInfo;
+import com.kevin.model.info.ClubInfo;
+import com.kevin.model.info.SchoolInfo;
+import com.kevin.model.info.UniversityInfo;
 import com.kevin.service.BaseNoticeService;
+import com.kevin.service.UniversityInfoService;
+import com.kevin.service.UserInfoService;
 import com.kevin.service.UserService;
+import com.kevin.web.controller.spider.GithubRepoPageProcessor;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.pipeline.JsonFilePipeline;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,6 +32,8 @@ public class UserTest {
 
 	private UserService userService;
 	private BaseNoticeService baseNoticeService;
+	private UniversityInfoService universityinfoService;
+	private UserInfoService userInfoService;
 
 	@Autowired
 	private User user;
@@ -39,6 +49,8 @@ public class UserTest {
 		userService = (UserService) context.getBean("userServiceImpl");
 		baseNoticeService = (BaseNoticeService)context.getBean("baseNoticeServiceImpl");
 		user = (User) context.getBean("user");
+		universityinfoService = (UniversityInfoService)context.getBean("universityInfoServiceImpl");
+		userInfoService = (UserInfoService)context.getBean("userInfoServiceImpl");
 	}
 	
 	@Test
@@ -92,5 +104,26 @@ public class UserTest {
 	@Test
 	public void testDate(){
 		baseNoticeService.insertNoticePraise(1,5);
+	}
+
+	@Test
+	public void testSpider(){
+		Spider.create(new GithubRepoPageProcessor()).addUrl("https://github.com/code4craft").addPipeline(new JsonFilePipeline("D:\\webmagic\\")).thread(5).run();
+	}
+
+	@Test
+	public void testUserInfo(){
+		List<ClubInfo> clubInfoList = userInfoService.queryUserJoined(1);
+
+	}
+	@Test
+	public void testGetUniversityInfo(){
+		UniversityInfo universityInfo = universityinfoService.getUniversityInfo(1);
+		for (ClubInfo c:universityInfo.getClubInfoList()){
+			System.out.println(c.getName());
+		}
+
+//		SchoolInfo schoolInfo = universityinfoService.getSchoolInfo(1);
+//		System.out.println(schoolInfo.getCommunityInfoList().get(0).getName());
 	}
 }
