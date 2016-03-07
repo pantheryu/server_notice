@@ -55,5 +55,6 @@
     <module>framework</module>
     <module>web</module>
     <module>model</module>
+      <module>spider</module>
   </modules>
 </project>
